@@ -12,15 +12,21 @@ public class Player : MonoBehaviour
     [SerializeField] float _moveSpeed;
     [SerializeField] FieldState _fieldState;
     [SerializeField] Rigidbody _rb;
+    private ReactiveProperty<bool> _inputAttackButton = new ReactiveProperty<bool>();
 
     private void Start()
     {
+        _inputAttackButton
+            .Where(x => x)
+            .ThrottleFirst(System.TimeSpan.FromSeconds(_attackInterval))
+            .Subscribe(_ => Attack())
+            .AddTo(this);
     }
 
     private void Update()
     {
         Move();
-        Attack();
+        _inputAttackButton.SetValueAndForceNotify(Input.GetButton("Fire1"));
     }
 
     /// <summary>
@@ -60,8 +66,7 @@ public class Player : MonoBehaviour
     /// </summary>
     private void Attack()
     {
-        if (Input.GetButton("Fire1"))
-            Debug.Log("çUåÇ");
+        Debug.Log("çUåÇ");
     }
 }
 

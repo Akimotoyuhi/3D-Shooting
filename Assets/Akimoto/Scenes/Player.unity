@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _power: 0
-  _attackInterval: 0
+  _attackInterval: 0.1
   _moveSpeed: 5
   _fieldState: 5
   _rb: {fileID: 683460584}
