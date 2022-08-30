@@ -136,6 +136,42 @@ namespace ObjectPool
         }
 
         /// <summary>
+        /// Poolの使用
+        /// </summary>
+        public void UseRequest()
+        {
+            if (!ChackSuccess())
+            {
+                Debug.LogWarning("Poolの使用権限がありません");
+                return;
+            }
+
+            try
+            {
+                PoolData data = _poolList.First(p => !p.IsUse);
+
+                if (_isAutoActive)
+                {
+                    data.Pool.gameObject.SetActive(true);
+                }
+
+                data.IsUse = true;
+                data.Event.IsDone = false;
+                data.Pool.OnEnableEvent();
+                data.Pool.StartCoroutine(Execution(data));
+            }
+            catch
+            {
+                CreatePool(_createCount);
+
+                Debug.LogWarning($"Poolが上限に達したので上限を増やしました。" +
+                    $"\n 対象Pool.{_monoPool.name} : 生成数.{_createCount} : 上限.{_poolList.Count}");
+
+                UseRequest();
+            }
+        }
+
+        /// <summary>
         /// Poolの使用リクエスト
         /// </summary>
         /// <param name="action">Invoke(); することで使用</param>
