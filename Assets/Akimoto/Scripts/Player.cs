@@ -83,13 +83,3 @@ public class Player : MonoBehaviour
         b.velocity = transform.forward * _balletSpeed;
     }
 }
-
-public enum FieldState
-{
-    Up,
-    Down,
-    Right,
-    Left,
-    Forward,
-    Behind,
-}
