@@ -7,11 +7,19 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
+    /// <summary>攻撃力</summary>
     [SerializeField] int _power;
+    /// <summary>攻撃間隔</summary>
     [SerializeField] float _attackInterval;
+    /// <summary>移動速度</summary>
     [SerializeField] float _moveSpeed;
+    /// <summary>弾の速度</summary>
+    [SerializeField] float _balletSpeed;
+    /// <summary>フィールドの状態<br/>後にフィールド管理クラスに移動予定</summary>
     [SerializeField] FieldState _fieldState;
     [SerializeField] Rigidbody _rb;
+    /// <summary>弾のプレハブ<br/>後に変える</summary>
+    [SerializeField] Rigidbody _balletPrefab;
     private ReactiveProperty<bool> _inputAttackButton = new ReactiveProperty<bool>();
 
     private void Start()
@@ -39,22 +47,22 @@ public class Player : MonoBehaviour
         if (_fieldState == FieldState.Up || _fieldState == FieldState.Down)
         {
             v = new Vector3(
-                Input.GetAxis("Horizontal"),
+                Input.GetAxisRaw("Horizontal"),
                 0,
-                Input.GetAxis("Vertical"));
+                Input.GetAxisRaw("Vertical"));
         }
         else if (_fieldState == FieldState.Right || _fieldState == FieldState.Left)
         {
             v = new Vector3(
                 0,
-                Input.GetAxis("Vertical"),
-                Input.GetAxis("Horizontal"));
+                Input.GetAxisRaw("Vertical"),
+                Input.GetAxisRaw("Horizontal"));
         }
         else if (_fieldState == FieldState.Forward || _fieldState == FieldState.Behind)
         {
             v = new Vector3(
-                Input.GetAxis("Horizontal"),
-                Input.GetAxis("Vertical"),
+                Input.GetAxisRaw("Horizontal"),
+                Input.GetAxisRaw("Vertical"),
                 0);
         }
 
@@ -66,7 +74,8 @@ public class Player : MonoBehaviour
     /// </summary>
     private void Attack()
     {
-        Debug.Log("攻撃");
+        Rigidbody brb = Instantiate(_balletPrefab, transform.position, Quaternion.identity);
+        brb.velocity = transform.forward * _balletSpeed;
     }
 }
 

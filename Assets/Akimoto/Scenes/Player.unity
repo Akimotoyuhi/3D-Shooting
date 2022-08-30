@@ -251,10 +251,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _power: 0
-  _attackInterval: 0.1
+  _attackInterval: 1
   _moveSpeed: 5
+  _balletSpeed: 10
   _fieldState: 5
   _rb: {fileID: 683460584}
+  _balletPrefab: {fileID: 1147504795741965511, guid: 219c647a41808c24fa92fbda81351370, type: 3}
 --- !u!54 &683460584
 Rigidbody:
   m_ObjectHideFlags: 0
