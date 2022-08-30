@@ -313,9 +313,9 @@ GameObject:
   - component: {fileID: 1656443201}
   - component: {fileID: 1656443200}
   - component: {fileID: 1656443199}
+  - component: {fileID: 1656443205}
   - component: {fileID: 1656443203}
   - component: {fileID: 1656443204}
-  - component: {fileID: 1656443205}
   - component: {fileID: 1656443206}
   m_Layer: 0
   m_Name: Enemy
@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveOperator: {fileID: 1656443204}
-  _bulletOperator: {fileID: 0}
+  _bulletOperator: {fileID: 1656443206}
 --- !u!114 &1656443204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,10 +430,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveData:
     _moveType: 0
-    _speed: 3
+    _speed: 0
     _shakeCondition:
-      _horizontal: 1
-      _verticle: 1
+      _horizontal: 0
+      _verticle: 0
       _size: 5
       _loopSpeed: 1
 --- !u!54 &1656443205
@@ -464,4 +464,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525a0dbc27c5c6343a337c992ba7ea60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 0}
+  _bulletPrefab: {fileID: -7384512543833231640, guid: 3bf52b435d865c04cb84c46ae69ce94e, type: 3}
+  _createCount: 10
+  _bulletDataList: []
