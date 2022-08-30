@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] Player _playerPrefab;
     private ReactiveProperty<FieldState> _fieldState = new ReactiveProperty<FieldState>();
     public static GameManager Instance { get; private set; }
+    /// <summary>現在生成されているプレイヤー</summary>
     public Player CurrentPlayer { get; private set; }
+    /// <summary>FieldStateの変更を通知する</summary>
     public System.IObservable<FieldState> FieldStateObservable => _fieldState;
 
     private void Awake()
@@ -20,9 +22,13 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Create();   
+        Create();
+        _fieldState.Value = FieldState.Behind;
     }
 
+    /// <summary>
+    /// 色々生成
+    /// </summary>
     private void Create()
     {
         CurrentPlayer = Instantiate(_playerPrefab);
@@ -30,6 +36,9 @@ public class GameManager : MonoBehaviour
     }
 }
 
+/// <summary>
+/// フィールドの状態
+/// </summary>
 public enum FieldState
 {
     Up,
