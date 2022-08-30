@@ -37,6 +37,8 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Move();
+
+        //UŒ‚ƒ{ƒ^ƒ“‚Ì“ü—Íó‚¯æ‚è
         _inputAttackButton.SetValueAndForceNotify(Input.GetButton("Fire1"));
     }
 
@@ -77,8 +79,8 @@ public class Player : MonoBehaviour
     /// </summary>
     private void Attack()
     {
-        Rigidbody brb = Instantiate(_balletPrefab, transform.position, Quaternion.identity);
-        brb.velocity = transform.forward * _balletSpeed;
+        Rigidbody b = Instantiate(_balletPrefab, transform.position, Quaternion.identity);
+        b.velocity = transform.forward * _balletSpeed;
     }
 }
 
