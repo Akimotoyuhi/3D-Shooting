@@ -22,16 +22,18 @@ public class Player : MonoBehaviour
     [SerializeField] Rigidbody _balletPrefab;
     /// <summary>攻撃ボタンの入力受け取り用</summary>
     private ReactiveProperty<bool> _inputAttackButton = new ReactiveProperty<bool>();
-    /// <summary>FieldStateの設定</summary>
-    public FieldState SetFieldState => _fieldState;
 
-    private void Start()
+    public void Setup()
     {
+        //攻撃ボタンの入力通知の購読
         _inputAttackButton
             .Where(x => x)
             .ThrottleFirst(System.TimeSpan.FromSeconds(_attackInterval))
             .Subscribe(_ => Attack())
             .AddTo(this);
+
+        //FieldStateの更新を受け取れるように
+        GameManager.Instance.FieldStateObservable.Subscribe(s => _fieldState = s).AddTo(this);
     }
 
     private void Update()

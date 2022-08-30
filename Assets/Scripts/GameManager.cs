@@ -8,10 +8,10 @@ using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] Player _playerPrefab;
-    private ReactiveProperty<FieldState> m_fieldState = new ReactiveProperty<FieldState>();
+    private ReactiveProperty<FieldState> _fieldState = new ReactiveProperty<FieldState>();
     public static GameManager Instance { get; private set; }
     public Player CurrentPlayer { get; private set; }
-    public System.IObservable<FieldState> FieldState => m_fieldState;
+    public System.IObservable<FieldState> FieldStateObservable => _fieldState;
 
     private void Awake()
     {
@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     private void Create()
     {
         CurrentPlayer = Instantiate(_playerPrefab);
+        CurrentPlayer.Setup();
     }
 }
 
