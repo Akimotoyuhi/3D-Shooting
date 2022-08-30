@@ -38,6 +38,7 @@ namespace ObjectPool
         int _createCount;
         bool _isCreate;
         bool _isSetMono;
+        bool _isAutoActive;
 
         MonoPool _monoPool;
         List<PoolData> _poolList = new List<PoolData>();
@@ -72,6 +73,17 @@ namespace ObjectPool
         }
 
         /// <summary>
+        /// égópPoolÇ…ëŒÇ∑ÇÈActiveå†å¿ÇÃé©ìÆâª
+        /// </summary>
+        /// <returns></returns>
+        public Pool<MonoPool> IsAutoActive()
+        {
+            _isAutoActive = true;
+
+            return this;
+        }
+
+        /// <summary>
         /// PoolÇÃê∂ê¨Request
         /// </summary>
         /// <returns></returns>
@@ -89,7 +101,7 @@ namespace ObjectPool
         {
             for (int index = 0; index < createCount; index++)
             {
-                MonoPool pool = UnityEngine.Object.Instantiate(_monoPool);
+                MonoPool pool = Object.Instantiate(_monoPool);
                 pool.Setup(_parent);
 
                 PoolData data = CreateData(pool);
@@ -100,6 +112,11 @@ namespace ObjectPool
                 if (_parent != null)
                 {
                     data.Pool.transform.SetParent(_parent);
+                }
+
+                if (_isAutoActive)
+                {
+                    data.Pool.gameObject.SetActive(false);
                 }
             }
         }
@@ -136,6 +153,11 @@ namespace ObjectPool
             try
             {
                 PoolData data = _poolList.First(p => !p.IsUse);
+
+                if (_isAutoActive)
+                {
+                    action += () => data.Pool.gameObject.SetActive(true);
+                }
 
                 action += () => data.IsUse = true;
                 action += () => data.Event.IsDone = false;
@@ -197,6 +219,11 @@ namespace ObjectPool
 
             data.IsUse = false;
             data.Pool.Delete();
+
+            if (_isAutoActive)
+            {
+                data.Pool.gameObject.SetActive(false);
+            }
         }
     }
 }
