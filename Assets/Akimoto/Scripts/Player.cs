@@ -20,7 +20,10 @@ public class Player : MonoBehaviour
     [SerializeField] Rigidbody _rb;
     /// <summary>弾のプレハブ<br/>後に変える</summary>
     [SerializeField] Rigidbody _balletPrefab;
+    /// <summary>攻撃ボタンの入力受け取り用</summary>
     private ReactiveProperty<bool> _inputAttackButton = new ReactiveProperty<bool>();
+    /// <summary>FieldStateの設定</summary>
+    public FieldState SetFieldState => _fieldState;
 
     private void Start()
     {
