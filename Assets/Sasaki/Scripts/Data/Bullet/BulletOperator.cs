@@ -60,8 +60,7 @@ public class BulletOperator : MonoBehaviour
         BulletParam param = data.IBulletData.SendData();
         
         Vector3 dir = SetDir(data.IBulletData);
-        CollectBlur(param.Blur, ref dir);
-
+        CollectDir(param.Blur, ref dir);
 
         bullet.SetData(data.Speed, dir, data.CurveVal);
     }
@@ -89,9 +88,10 @@ public class BulletOperator : MonoBehaviour
         return dir;
     }
 
-    void CollectBlur(float blur, ref Vector3 dir)
+    // Note. ƒJƒƒ‰‚É‘Î‚·‚éƒuƒŒ‚ğ‘z’è
+    void CollectDir(float blur, ref Vector3 dir)
     {
-        
+        // tbd.
     }
 
     public void IsAuto(bool isAuto)

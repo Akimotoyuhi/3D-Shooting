@@ -1,6 +1,6 @@
 public class BulletParam
 {
-    public float WayCount;
+    public int WayCount;
     public float Angle;
     public float Blur;
 }
