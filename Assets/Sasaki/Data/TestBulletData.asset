@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45333896d878ad54d983f2bd20e37468, type: 3}
-  m_Name: BulletData
+  m_Name: TestBulletData
   m_EditorClassIdentifier: 
   _bulletData:
     _moveType: 0
@@ -18,11 +18,12 @@ MonoBehaviour:
     _curveVal: 0
     _curveSpeed: 0
     _bulletData:
-      rid: 5180214500614209536
+      rid: 5180214500614209537
   references:
     version: 2
     RefIds:
-    - rid: 5180214500614209536
-      type: {class: ForwardBullet, ns: , asm: Assembly-CSharp}
+    - rid: 5180214500614209537
+      type: {class: WayBullet, ns: , asm: Assembly-CSharp}
       data:
-        _blur: 0
+        _wayCount: 0
+        _angle: 0

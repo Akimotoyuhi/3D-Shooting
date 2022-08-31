@@ -62,9 +62,10 @@ public class BulletOperator : MonoBehaviour
         Vector3 dir = SetDir(data.IBulletData);
         CollectDir(param.Blur, ref dir);
 
-        bullet.SetData(data.Speed, dir, data.CurveVal);
+        bullet.SetData(data.Speed * dir, data.CurveVal, data.CurveSpeed);
     }
 
+    // tbd
     Vector3 SetDir(IBulletData data)
     {
         Vector3 dir = transform.forward;
@@ -85,7 +86,7 @@ public class BulletOperator : MonoBehaviour
                 break;
         }
 
-        return dir;
+        return dir.normalized;
     }
 
     // Note. ƒJƒƒ‰‚É‘Î‚·‚éƒuƒŒ‚ğ‘z’è

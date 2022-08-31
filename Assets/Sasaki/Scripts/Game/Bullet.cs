@@ -11,9 +11,9 @@ public class Bullet : MonoBehaviour, IPool, IPoolEvent
 
     float _timer;
 
-    float _speed;
-    float _curve;
-    Vector3 _dir;
+    float _curveVal;
+    float _curveSpeed;
+    Vector3 _velocity;
     
     Rigidbody _rb;
     Transform _parent;
@@ -28,11 +28,11 @@ public class Bullet : MonoBehaviour, IPool, IPoolEvent
         _parent = parent;
     }
 
-    public void SetData(float speed, Vector3 dir, float curve)
+    public void SetData(Vector3 velocity, float curveVal, float curveSpeed)
     {
-        _speed = speed;
-        _dir = dir;
-        _curve = curve;
+        _velocity = velocity;
+        _curveVal = curveVal;
+        _curveSpeed = curveSpeed;
     }
 
     public void OnEnableEvent()
@@ -44,7 +44,12 @@ public class Bullet : MonoBehaviour, IPool, IPoolEvent
     {
         _timer += Time.deltaTime;
 
-        _rb.velocity = _dir * _speed;
+        Vector3 velocity = _velocity;
+        float curve = _timer * _curveSpeed;
+
+
+
+        _rb.velocity = velocity;
 
         return _timer > _activeTime;
     }
@@ -52,7 +57,7 @@ public class Bullet : MonoBehaviour, IPool, IPoolEvent
     public void Delete()
     {
         _timer = 0;
-        _speed = 0;
+        _velocity = Vector3.zero;
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -10,7 +10,6 @@ public class ForwardBullet : IBulletData
         BulletParam param = new BulletParam();
 
         param.WayCount = 1;
-        param.Angle = 0;
         param.Blur = _blur;
 
         return param;
