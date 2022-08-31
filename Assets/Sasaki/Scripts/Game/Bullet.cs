@@ -10,8 +10,11 @@ public class Bullet : MonoBehaviour, IPool, IPoolEvent
     [SerializeField] float _activeTime;
 
     float _timer;
-    BulletData _bulletData;
 
+    float _curveVal;
+    float _curveSpeed;
+    Vector3 _velocity;
+    
     Rigidbody _rb;
     Transform _parent;
 
@@ -25,9 +28,11 @@ public class Bullet : MonoBehaviour, IPool, IPoolEvent
         _parent = parent;
     }
 
-    public void SetData(BulletData data)
+    public void SetData(Vector3 velocity, float curveVal, float curveSpeed)
     {
-        _bulletData = data;
+        _velocity = velocity;
+        _curveVal = curveVal;
+        _curveSpeed = curveSpeed;
     }
 
     public void OnEnableEvent()
@@ -39,16 +44,24 @@ public class Bullet : MonoBehaviour, IPool, IPoolEvent
     {
         _timer += Time.deltaTime;
 
+        Vector3 velocity = _velocity;
+        float curve = _timer * _curveSpeed;
+
+
+
+        _rb.velocity = velocity;
+
         return _timer > _activeTime;
     }
 
     public void Delete()
     {
         _timer = 0;
+        _velocity = Vector3.zero;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        IsDone = true;
+        //IsDone = true;
     }
 }
