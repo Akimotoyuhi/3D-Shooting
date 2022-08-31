@@ -20,10 +20,10 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
+    private void Start()
     {
         Create();
-        _fieldState.Value = FieldState.Behind;
+        Count();
     }
 
     /// <summary>
@@ -33,6 +33,13 @@ public class GameManager : MonoBehaviour
     {
         CurrentPlayer = Instantiate(_playerPrefab);
         CurrentPlayer.Setup();
+    }
+
+    private async void Count()
+    {
+        await UniTask.Delay(5 * 1000);
+        _fieldState.Value = FieldState.Behind;
+        Debug.Log("FieldState‚ğBehind‚É•ÏX");
     }
 }
 
