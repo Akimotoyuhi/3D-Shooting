@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
 
         _moveOperator.Initalize();
         _moveOperator.OprationRequest(true);
+
+        _bulletOperator.IsAuto(true);
     }
 
     void Update()

@@ -239,7 +239,6 @@ namespace ObjectPool
         {
             while (!data.Pool.Execute() && !data.IsEvent())
             {
-                Debug.Log($"Execute {data.Pool.Execute()} Event {data.IsEvent()}");
                 yield return null;
             }
 
