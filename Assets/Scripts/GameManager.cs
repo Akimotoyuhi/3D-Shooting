@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     /// <summary>現在生成されているプレイヤー</summary>
     public Player CurrentPlayer { get; private set; }
-    /// <summary>FieldStateの変更を通知する</summary>
-    public System.IObservable<FieldState> FieldStateObservable => _fieldState;
+    /// <summary>FieldStateの変更を通知する<br/>最初の通知は無視する</summary>
+    public System.IObservable<FieldState> FieldStateObservable => _fieldState.SkipLatestValueOnSubscribe();
 
     private void Awake()
     {
@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Create();
-        Count();
     }
 
     /// <summary>
@@ -35,11 +34,14 @@ public class GameManager : MonoBehaviour
         CurrentPlayer.Setup();
     }
 
-    private async void Count()
+    /// <summary>
+    /// 数秒の待ってからFIeldStateを変える<br/>テスト用
+    /// </summary>
+    private async void DelayFieldStateChange(int second, FieldState fieldState)
     {
-        await UniTask.Delay(5 * 1000);
-        _fieldState.Value = FieldState.Behind;
-        Debug.Log("FieldStateをBehindに変更");
+        await UniTask.Delay(second * 1000); //ミリ秒に変換
+        _fieldState.SetValueAndForceNotify(fieldState);
+        Debug.Log($"FieldStateを{_fieldState.Value}に変更");
     }
 }
 
