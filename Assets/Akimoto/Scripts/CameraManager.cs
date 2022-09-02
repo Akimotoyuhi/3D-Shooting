@@ -14,11 +14,13 @@ public class CameraManager : MonoBehaviour
     [SerializeField] Camera _camera;
     /// <summary>FieldStateに応じた位置や、カメラの角度の設定項目</summary>
     [SerializeField] List<CameraPositionSetting> _cameraPositonSettings;
+    /// <summary>移動にかける時間</summary>
     [SerializeField] float _moveDuraiton;
     private Sequence _sequence;
 
     private void Start()
     {
+        //FieldStateの変化を監視
         GameManager.Instance.FieldStateObservable
             .Subscribe(x => CameraMove(x))
             .AddTo(this);

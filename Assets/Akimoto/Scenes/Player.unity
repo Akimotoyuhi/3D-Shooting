@@ -335,22 +335,22 @@ MonoBehaviour:
   _camera: {fileID: 2052556969}
   _cameraPositonSettings:
   - _fieldState: 0
-    _cameraPosition: {fileID: 720534720}
+    _position: {fileID: 720534720}
     _rotation: {x: 90, y: 0, z: 0}
   - _fieldState: 1
-    _cameraPosition: {fileID: 1215833301}
+    _position: {fileID: 1215833301}
     _rotation: {x: -90, y: 0, z: 0}
   - _fieldState: 2
-    _cameraPosition: {fileID: 368503212}
+    _position: {fileID: 368503212}
     _rotation: {x: 0, y: -90, z: 0}
   - _fieldState: 3
-    _cameraPosition: {fileID: 922574173}
+    _position: {fileID: 922574173}
     _rotation: {x: 0, y: 90, z: 0}
   - _fieldState: 4
-    _cameraPosition: {fileID: 842069174}
+    _position: {fileID: 842069174}
     _rotation: {x: 0, y: 180, z: 0}
   - _fieldState: 5
-    _cameraPosition: {fileID: 32289073}
+    _position: {fileID: 32289073}
     _rotation: {x: 0, y: 0, z: 0}
   _moveDuraiton: 1
 --- !u!1 &283188233

@@ -25,14 +25,14 @@ public class Player : MonoBehaviour
 
     public void Setup()
     {
-        //攻撃ボタンの入力通知の購読
+        //攻撃ボタンの入力通知を監視
         _inputAttackButton
             .Where(x => x)
             .ThrottleFirst(System.TimeSpan.FromSeconds(_attackInterval))
             .Subscribe(_ => Attack())
             .AddTo(this);
 
-        //FieldStateの更新を受け取れるように
+        //FieldStateを監視
         GameManager.Instance.FieldStateObservable
             .Subscribe(s => _fieldState = s)
             .AddTo(this);
