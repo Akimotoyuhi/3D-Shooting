@@ -27,10 +27,12 @@ public class MoveOperator : MonoBehaviour
     /// <returns>Velocity</returns>
     public Vector3 MoveCollect(Transform t)
     {
-        Vector3 forward = Rotate(t) * _moveData.Speed;
         Vector2 dir = SetDir() * _moveData.ShakeSize;
+
+        Vector3 forward = Rotate(t) * _moveData.Speed;
+        Vector3 right = t.right * dir.x;
         
-        return new Vector3(forward.x + dir.x, forward.y + dir.y, forward.z);
+        return new Vector3(forward.x + right.x, forward.y + dir.y, forward.z + right.z);
     }
 
     Vector3 Rotate(Transform t)
