@@ -22,15 +22,19 @@ public class Player : MonoBehaviour
     [SerializeField] Rigidbody _balletPrefab;
     /// <summary>攻撃ボタンの入力受け取り用</summary>
     private ReactiveProperty<bool> _inputAttackButton = new ReactiveProperty<bool>();
-    /// <summary>FieldStateの設定</summary>
-    public FieldState SetFieldState => _fieldState;
 
-    private void Start()
+    public void Setup()
     {
+        //攻撃ボタンの入力通知を監視
         _inputAttackButton
             .Where(x => x)
             .ThrottleFirst(System.TimeSpan.FromSeconds(_attackInterval))
             .Subscribe(_ => Attack())
+            .AddTo(this);
+
+        //FieldStateを監視
+        GameManager.Instance.FieldStateObservable
+            .Subscribe(s => _fieldState = s)
             .AddTo(this);
     }
 
@@ -49,26 +53,46 @@ public class Player : MonoBehaviour
     {
         Vector3 v = Vector3.zero;
         //フィールドの状態に応じて移動方向を変える
-        if (_fieldState == FieldState.Up || _fieldState == FieldState.Down)
+        switch (_fieldState)
         {
-            v = new Vector3(
-                Input.GetAxisRaw("Horizontal"),
-                0,
-                Input.GetAxisRaw("Vertical"));
-        }
-        else if (_fieldState == FieldState.Right || _fieldState == FieldState.Left)
-        {
-            v = new Vector3(
-                0,
-                Input.GetAxisRaw("Vertical"),
-                Input.GetAxisRaw("Horizontal"));
-        }
-        else if (_fieldState == FieldState.Forward || _fieldState == FieldState.Behind)
-        {
-            v = new Vector3(
-                Input.GetAxisRaw("Horizontal"),
-                Input.GetAxisRaw("Vertical"),
-                0);
+            case FieldState.Up:
+                v = new Vector3(
+                    Input.GetAxisRaw("Horizontal"),
+                    0,
+                    Input.GetAxisRaw("Vertical"));
+                break;
+            case FieldState.Down:
+                v = new Vector3(
+                    Input.GetAxisRaw("Horizontal"),
+                    0,
+                    -Input.GetAxisRaw("Vertical"));
+                break;
+            case FieldState.Right:
+                v = new Vector3(
+                    0,
+                    Input.GetAxisRaw("Vertical"),
+                    Input.GetAxisRaw("Horizontal"));
+                break;
+            case FieldState.Left:
+                v = new Vector3(
+                    0,
+                    Input.GetAxisRaw("Vertical"),
+                    -Input.GetAxisRaw("Horizontal"));
+                break;
+            case FieldState.Forward:
+                v = new Vector3(
+                    -Input.GetAxisRaw("Horizontal"),
+                    Input.GetAxisRaw("Vertical"),
+                    0);
+                break;
+            case FieldState.Behind:
+                v = new Vector3(
+                    Input.GetAxisRaw("Horizontal"),
+                    Input.GetAxisRaw("Vertical"),
+                    0);
+                break;
+            default:
+                break;
         }
 
         _rb.velocity = v * _moveSpeed;
