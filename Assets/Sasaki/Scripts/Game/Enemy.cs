@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
             _bulletOperator.ShotRequest();
         }
 
-        Vector3 move = _moveOperator.MoveCollect(transform);
+        Vector3 move = _moveOperator.Move(transform);
         _rb.velocity = move;
     }
 }

@@ -25,31 +25,40 @@ public class MoveOperator : MonoBehaviour
     /// </summary>
     /// <param name="t">使用者</param>
     /// <returns>Velocity</returns>
-    public Vector3 MoveCollect(Transform t)
+    public Vector3 Move(Transform t)
     {
         Vector2 dir = SetDir() * _moveData.ShakeSize;
 
-        Vector3 forward = Rotate(t) * _moveData.Speed;
+        Vector3 forward = SetToward(t) * _moveData.Speed;
         Vector3 right = t.right * dir.x;
         
         return new Vector3(forward.x + right.x, forward.y + dir.y, forward.z + right.z);
     }
 
-    Vector3 Rotate(Transform t)
+    Vector3 SetToward(Transform t)
     {
         Vector3 dir;
 
         if (_moveData.MoveType == MoveType.ToPlayer)
         {
-            // tbd Playerを想定
-            dir = t.forward;
+            Player player = GameManager.Instance.CurrentPlayer;
+
+            if (player == null)
+            {
+                dir = t.forward;
+                Debug.LogWarning($"Player情報が取得できませんでした。対象Object => {gameObject.name}.");
+            }
+            else
+            {
+                dir = player.transform.position - t.position;
+            }
         }
         else
         {
             dir = t.forward;
         }
 
-        return dir;
+        return dir.normalized;
     }
 
     Vector2 SetDir()
