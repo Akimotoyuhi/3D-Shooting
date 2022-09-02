@@ -32,8 +32,7 @@ public class MoveOperator : MonoBehaviour
         Vector3 forward = Rotate(t) * _moveData.Speed;
         Vector3 right = t.right * dir.x;
         
-        
-        return new Vector3(forward.x + right.x, forward.y + dir.y + right.y, forward.z + right.z);
+        return new Vector3(forward.x + right.x, forward.y + dir.y, forward.z + right.z);
     }
 
     Vector3 Rotate(Transform t)
