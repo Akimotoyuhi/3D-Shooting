@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Soundのデータクラス
+/// </summary>
 [System.Serializable]
 public class SoundData
 {
@@ -8,4 +11,6 @@ public class SoundData
     [SerializeField, Range(0, 1)] int _spatialBlend;
 
     public string Path => _clip.name;
+    public float Volume => _volume;
+    public int SpatialBlend => _spatialBlend;
 }

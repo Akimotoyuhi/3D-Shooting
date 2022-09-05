@@ -9,7 +9,7 @@ public enum SoundType
 }
 
 /// <summary>
-/// 
+/// サウンドのデータクラス
 /// </summary>
 [CreateAssetMenu(fileName = "SoundData")]
 public class SoundDataBase : ScriptableObject
@@ -18,6 +18,12 @@ public class SoundDataBase : ScriptableObject
     [SerializeField] List<SoundData> _dataList;
 
     public SoundType SoundType => _soundType;
+
+    /// <summary>
+    /// SoundDataの取得
+    /// </summary>
+    /// <param name="path">Soundの名前</param>
+    /// <returns></returns>
     public SoundData GetData(string path)
     {
         SoundData data;
