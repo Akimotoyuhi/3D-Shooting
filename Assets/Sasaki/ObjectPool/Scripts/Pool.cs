@@ -40,6 +40,8 @@ namespace ObjectPool
         bool _isSetMono;
         bool _isAutoActive;
 
+        HideFlags _hideFlags = HideFlags.None;
+
         MonoPool _monoPool;
         List<PoolData> _poolList = new List<PoolData>();
 
@@ -84,6 +86,18 @@ namespace ObjectPool
         }
 
         /// <summary>
+        /// Hierarchyè„Ç≈ÇÃObjectÇÃóLñ≥Çê›íË
+        /// </summary>
+        /// <param name="flags"></param>
+        /// <returns></returns>
+        public Pool<MonoPool> SetHideFlags()
+        {
+            _hideFlags = HideFlags.HideInHierarchy;
+
+            return this;
+        }
+
+        /// <summary>
         /// PoolÇÃê∂ê¨Request
         /// </summary>
         /// <returns></returns>
@@ -108,6 +122,7 @@ namespace ObjectPool
                 _poolList.Add(data);
 
                 data.Event = pool.GetComponent<IPoolEvent>();
+                data.Pool.gameObject.hideFlags = _hideFlags;
 
                 if (_parent != null)
                 {

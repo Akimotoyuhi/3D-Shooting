@@ -1,16 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 using ObjectPool;
 
 public class BulletOperator : MonoBehaviour
 {
     [SerializeField] Bullet _bulletPrefab;
+    [SerializeField] bool _isHideFlag;
     [SerializeField] int _createCount = 5;
     [SerializeField] float _intervalTime;
     [SerializeField] List<BulletDataBase> _bulletDataList;
 
     float _timer;
     bool _isAuto;
+
+    FieldState _currentFieldState;
 
     Pool<Bullet> _bulletPool = new Pool<Bullet>();
 
@@ -19,8 +23,21 @@ public class BulletOperator : MonoBehaviour
         _bulletPool
             .SetMono(_bulletPrefab, _createCount)
             .IsSetParent(transform)
-            .IsAutoActive()
-            .CreateRequest();
+            .IsAutoActive();
+
+        if (_isHideFlag)
+        {
+            _bulletPool.SetHideFlags();
+        }
+           
+        _bulletPool.CreateRequest();
+    }
+
+    void Start()
+    {
+        GameManager.Instance.FieldStateObservable
+            .Subscribe(s => _currentFieldState = s)
+            .AddTo(this);
     }
 
     void Update()
@@ -93,6 +110,7 @@ public class BulletOperator : MonoBehaviour
     void CollectDir(float blur, ref Vector3 dir)
     {
         // tbd.
+        
     }
 
     public void IsAuto(bool isAuto)
