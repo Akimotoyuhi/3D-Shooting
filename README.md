@@ -14,3 +14,6 @@
 **５. 楽しむこと**
 - 作り手が楽しくないと楽しいゲームは出来ません。
 - 面白そうなことがあったらどんどん言ってくれ
+
+## クラス図
+- https://drive.google.com/file/d/1k9X362ST8VicLKjBQCgNOubjjX_uCyZp/view?usp=sharing
