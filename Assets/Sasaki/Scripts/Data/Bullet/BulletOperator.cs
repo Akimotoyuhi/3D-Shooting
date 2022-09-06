@@ -77,38 +77,18 @@ public class BulletOperator : MonoBehaviour
                 System.Action action;
                 Bullet bullet = _bulletPool.UseRequest(out action);
 
-                Vector3 dir = SetDir(data.IBulletData);
-                SetBlur(param.Blur, ref dir);
+                FieldStateHelper.ViewState view = FieldStateHelper.CollectState(_currentFieldState);
+                Vector3 dir = data.IBulletData.SetDir(view, transform);
+
+                //SetBlur(param.Blur, ref dir);
 
                 bullet.SetData(data.Speed * dir, data.CurveVal, data.CurveSpeed);
 
                 action.Invoke();
             }
+
+
         }
-    }
-
-    // tbd
-    Vector3 SetDir(IBulletData data)
-    {
-        Vector3 dir = transform.forward;
-
-        switch (data.Type)
-        {
-            case BulletType.Forward:
-                dir = transform.forward;
-
-                break;
-            case BulletType.Way:
-
-
-                break;
-            case BulletType.Circle:
-
-
-                break;
-        }
-
-        return dir.normalized;
     }
 
     // Note. ÉJÉÅÉâÇ…ëŒÇ∑ÇÈÉuÉåÇëzíË

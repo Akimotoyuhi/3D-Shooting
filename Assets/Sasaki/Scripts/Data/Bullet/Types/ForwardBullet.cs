@@ -17,4 +17,29 @@ public class ForwardBullet : IBulletData
 
         return param;
     }
+
+    public Vector3 SetDir(FieldStateHelper.ViewState state, Transform user)
+    {
+        Vector3 dir = Vector3.zero;
+
+        switch (state)
+        {
+            case FieldStateHelper.ViewState.TopView:
+                dir = user.forward;
+
+                break;
+            case FieldStateHelper.ViewState.SideView:
+                break;
+            case FieldStateHelper.ViewState.BackView:
+                break;
+        }
+
+        return dir;
+    }
+
+    public void Initalize()
+    {
+        
+    }
+
 }

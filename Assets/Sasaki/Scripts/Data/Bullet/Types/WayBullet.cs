@@ -12,7 +12,7 @@ public class WayBullet : IBulletData
 
     public BulletType Type => BulletType.Way;
 
-    public BulletParam SendData()
+    public BulletParam SetupData()
     {
         BulletParam param = new BulletParam();
 

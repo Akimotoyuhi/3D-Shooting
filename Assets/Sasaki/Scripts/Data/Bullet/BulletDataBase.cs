@@ -4,6 +4,8 @@ public interface IBulletData
 {
     BulletType Type { get; }
     BulletParam SendData();
+    Vector3 SetDir(FieldStateHelper.ViewState state, Transform user);
+    void Initalize();
 }
 
 public enum BulletType

@@ -430,7 +430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveData:
     _moveType: 0
-    _speed: 2
+    _speed: 0
     _shakeCondition:
       _horizontal: 1
       _verticle: 0.528

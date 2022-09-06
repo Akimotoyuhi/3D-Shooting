@@ -11,7 +11,7 @@ public class CircleBullet : IBulletData
 
     public BulletType Type => BulletType.Circle;
 
-    public BulletParam SendData()
+    public BulletParam SetupData()
     {
         BulletParam param = new BulletParam();
 
