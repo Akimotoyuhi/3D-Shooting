@@ -16,12 +16,19 @@ public class TestSounder : MonoBehaviour
     [SerializeField] Button _playBGMButton;
     [SerializeField] Button _stopBGMButton;
     [SerializeField] Button _playSEButton;
+    [SerializeField] VolumeOprater.VolumeType _volumeType;
+    [SerializeField, Range(0, 1)] float _volume;
 
     void Start()
     {
         _playBGMButton?.onClick.AddListener(() => PlayBGM());
         _playSEButton?.onClick.AddListener(() => PlaySE());
         _stopBGMButton?.onClick.AddListener(() => StopBGM());
+    }
+
+    void Update()
+    {
+        _soundManager.ChangeVolume(_volumeType, _volume);
     }
 
     void PlayBGM()
