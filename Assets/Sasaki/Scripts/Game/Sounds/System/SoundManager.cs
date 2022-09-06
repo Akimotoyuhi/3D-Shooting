@@ -20,6 +20,7 @@ public class SoundManager : MonoBehaviour
         _sounderPool
             .SetMono(_sounderPrefab, _createCount)
             .IsAutoActive()
+            .SetHideFlags()
             .CreateRequest();
     }
 
@@ -68,5 +69,15 @@ public class SoundManager : MonoBehaviour
 
         _bgmList.ForEach(b => b.Stop());
         _bgmList = new List<Sounder>();
+    }
+
+    /// <summary>
+    /// Volume•ÏX
+    /// </summary>
+    /// <param name="type">VolumeOprater.VolumeType</param>
+    /// <param name="volume">•ÏXŒã‚Ì‰¹—Ê</param>
+    public void ChangeVolume(VolumeOprater.VolumeType type, float volume)
+    {
+        VolumeOprater.CallBack.Invoke(type, volume);
     }
 }
