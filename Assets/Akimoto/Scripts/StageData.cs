@@ -29,9 +29,12 @@ public class WaveData
 public class WaveEnemiesData
 {
     [SerializeField] float _spawnTime;
+    [SerializeField] Vector3 _spawnPosition;
     [SerializeField] List<Enemy> _enemyPrefabs;
     /// <summary>ウェーブが始まってから何秒後に生成されるか</summary>
     public float SpawnTime => _spawnTime;
+    /// <summary>生成位置</summary>
+    public Vector3 SpawnPosition => _spawnPosition;
     /// <summary>生成される敵たち</summary>
     public List<Enemy> EnemyPrefabs => _enemyPrefabs;
 }

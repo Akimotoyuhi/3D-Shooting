@@ -147,10 +147,12 @@ MonoBehaviour:
     _moveType: 1
     _speed: 2
     _shakeCondition:
-      _horizontal: 1
-      _verticle: 1
-      _size: 5
-      _loopSpeed: 1
+      _horizontal: 0
+      _verticle: 0
+      _horizontalSpeed: 0
+      _verticleSpeed: 0
+      _size: 0
+      _loopSpeed: 0
 --- !u!114 &846321268065951503
 MonoBehaviour:
   m_ObjectHideFlags: 0
