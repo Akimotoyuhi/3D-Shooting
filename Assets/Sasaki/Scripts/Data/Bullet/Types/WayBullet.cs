@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// ŠgU’e‚Ìƒf[ƒ^
+/// </summary>
 public class WayBullet : IBulletData
 {
     [SerializeField] int _wayCount = 2;

@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// 円形弾のデータ
+/// </summary>
 public class CircleBullet : IBulletData
 {
     [SerializeField] int _wayCount;

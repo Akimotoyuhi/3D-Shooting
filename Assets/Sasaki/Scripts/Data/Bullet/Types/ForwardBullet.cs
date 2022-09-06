@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// ’Êí’e‚Ìƒf[ƒ^
+/// </summary>
 public class ForwardBullet : IBulletData
 {
     [SerializeField] float _blur;

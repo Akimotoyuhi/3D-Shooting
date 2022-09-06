@@ -13,6 +13,9 @@ public enum BulletType
     Circle,
 }
 
+/// <summary>
+/// 弾のデータベースクラス
+/// </summary>
 [CreateAssetMenu(fileName = "BulletData")]
 public class BulletDataBase : ScriptableObject
 {
