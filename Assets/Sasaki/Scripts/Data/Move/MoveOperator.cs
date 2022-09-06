@@ -63,8 +63,8 @@ public class MoveOperator : MonoBehaviour
 
     Vector2 SetDir()
     {
-        float sin = Mathf.Sin(_shakeTimer) * _moveData.Shake.x;
-        float cos = Mathf.Cos(_shakeTimer) * _moveData.Shake.y;
+        float sin = Mathf.Sin(_shakeTimer * _moveData.HorizontalSpeed) * _moveData.Shake.x;
+        float cos = Mathf.Cos(_shakeTimer * _moveData.VerticleSpeed) * _moveData.Shake.y;
 
         return new Vector2(sin, cos);
     }

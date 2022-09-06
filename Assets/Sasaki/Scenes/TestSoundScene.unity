@@ -330,9 +330,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5baf04be113ba43a9e25b7058e30b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sounderPrefab: {fileID: 0}
+  _sounderPrefab: {fileID: 6832629746952108536, guid: a01ba34f2c6635d48b0c6432d1e3df7b, type: 3}
   _createCount: 5
-  _dataList: []
+  _dataList:
+  - {fileID: 11400000, guid: 507017546b8a3ff429d7ed21bc2e540b, type: 2}
+  - {fileID: 11400000, guid: d468f47fdd97aea498b00edb0cc1130d, type: 2}
 --- !u!4 &1519982358
 Transform:
   m_ObjectHideFlags: 0

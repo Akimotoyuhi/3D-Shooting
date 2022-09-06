@@ -26,11 +26,16 @@ public class MoveData
         [SerializeField, Range(0, 1)] float _horizontal = 0;
         [SerializeField, Range(0, 1)] float _verticle = 0;
 
+        [SerializeField] float _horizontalSpeed;
+        [SerializeField] float _verticleSpeed;
+
         [SerializeField] float _size = 1;
         [SerializeField] float _loopSpeed = 1;
 
         public float Horizontal => _horizontal;
         public float Verticle => _verticle;
+        public float HrizontalSpeed => _horizontalSpeed;
+        public float VerticleSpeed => _verticleSpeed;
         public float Size => _size;
         public float LoopSpeed => _loopSpeed;
     }
@@ -66,6 +71,8 @@ public class MoveData
     /// </summary>
     public float ShakeSize => _shakeCondition.Size;
 
+    public float HorizontalSpeed => _shakeCondition.HrizontalSpeed;
+    public float VerticleSpeed => _shakeCondition.VerticleSpeed;
     /// <summary>
     /// U‚ê‹ï‡‚Ì‘¬‚³
     /// </summary>
