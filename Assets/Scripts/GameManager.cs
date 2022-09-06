@@ -7,7 +7,9 @@ using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] FieldManager _fieldManager;
     [SerializeField] Player _playerPrefab;
+    [SerializeField] StageData _stageData;
     private ReactiveProperty<FieldState> _fieldState = new ReactiveProperty<FieldState>();
     public static GameManager Instance { get; private set; }
     /// <summary>現在生成されているプレイヤー</summary>
@@ -22,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        _fieldManager.Setup();
         Create();
     }
 
@@ -32,6 +35,8 @@ public class GameManager : MonoBehaviour
     {
         CurrentPlayer = Instantiate(_playerPrefab);
         CurrentPlayer.Setup();
+
+        _fieldManager.StartWave(_stageData.Datas[0].WaveEnemiesDatas); //テスト用にとりあえず
     }
 
     /// <summary>
