@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18016346c7819645968770fa35ada48, type: 3}
   m_Name: TestSEData
   m_EditorClassIdentifier: 
-  _soundType: 0
-  _dataList: []
+  _soundType: 1
+  _dataList:
+  - _clip: {fileID: 8300000, guid: 13f77ed5a70f78b468fc85c1a18e4762, type: 3}
+    _volume: 1
+    _spatialBlend: 0
