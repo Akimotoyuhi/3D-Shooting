@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// 弾のデータクラス
+/// </summary>
 [System.Serializable]
 public class BulletData
 {

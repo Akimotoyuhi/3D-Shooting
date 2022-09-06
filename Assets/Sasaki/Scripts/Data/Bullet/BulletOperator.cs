@@ -3,6 +3,9 @@ using UnityEngine;
 using UniRx;
 using ObjectPool;
 
+/// <summary>
+/// 弾データの補正
+/// </summary>
 public class BulletOperator : MonoBehaviour
 {
     [SerializeField] Bullet _bulletPrefab;
@@ -59,22 +62,28 @@ public class BulletOperator : MonoBehaviour
         }
     }
 
-    public void ShotRequest(int id = 0)
+    /// <summary>
+    /// 弾を飛ばす際のリクエスト
+    /// </summary>
+    public void ShotRequest()
     {
-        BulletData data = _bulletDataList[id].BulletData;
-        BulletParam param = data.IBulletData.SendData();
-
-        for (int index = 0; index < param.WayCount; index++)
+        foreach (BulletDataBase dataBase in _bulletDataList)
         {
-            System.Action action;
-            Bullet bullet = _bulletPool.UseRequest(out action);
+            BulletData data = dataBase.BulletData;
+            BulletParam param = data.IBulletData.SendData();
 
-            Vector3 dir = SetDir(data.IBulletData);
-            SetBlur(param.Blur, ref dir);
+            for (int index = 0; index < param.WayCount; index++)
+            {
+                System.Action action;
+                Bullet bullet = _bulletPool.UseRequest(out action);
 
-            bullet.SetData(data.Speed * dir, data.CurveVal, data.CurveSpeed);
+                Vector3 dir = SetDir(data.IBulletData);
+                SetBlur(param.Blur, ref dir);
 
-            action.Invoke();
+                bullet.SetData(data.Speed * dir, data.CurveVal, data.CurveSpeed);
+
+                action.Invoke();
+            }
         }
     }
 
@@ -107,23 +116,12 @@ public class BulletOperator : MonoBehaviour
     {
         // tbd.
 
-        switch (_currentFieldState)
-        {
-            case FieldState.Up:
-                break;
-            case FieldState.Down:
-                break;
-            case FieldState.Right:
-                break;
-            case FieldState.Left:
-                break;
-            case FieldState.Forward:
-                break;
-            case FieldState.Behind:
-                break;
-        }
     }
 
+    /// <summary>
+    /// 弾を自動で飛ばす場合に呼び出す
+    /// </summary>
+    /// <param name="isAuto"></param>
     public void IsAuto(bool isAuto)
     {
         _isAuto = isAuto;

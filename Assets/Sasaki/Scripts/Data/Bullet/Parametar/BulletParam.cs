@@ -1,3 +1,7 @@
+/// <summary>
+/// 各々の弾パラメーター
+/// </summary>
+
 public class BulletParam
 {
     public BulletParam()
