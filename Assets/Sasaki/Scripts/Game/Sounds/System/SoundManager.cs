@@ -60,6 +60,12 @@ public class SoundManager : MonoBehaviour
     /// </summary>
     public void StopCurrentBGM()
     {
+        if (_bgmList.Count <= 0)
+        {
+            Debug.LogWarning("Œ»ÝÄ¶’†‚ÌBGM‚ª‚ ‚è‚Ü‚¹‚ñ");
+            return;
+        }
+
         _bgmList.ForEach(b => b.Stop());
         _bgmList = new List<Sounder>();
     }

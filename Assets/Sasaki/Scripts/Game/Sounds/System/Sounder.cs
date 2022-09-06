@@ -9,8 +9,7 @@ public class Sounder : MonoBehaviour, IPool, IPoolEvent
     AudioSource _source;
 
     float _volume;
-    bool _isSet;
-
+    
     SoundType _soundType;
 
     public bool IsDone { get; set; }
@@ -20,7 +19,6 @@ public class Sounder : MonoBehaviour, IPool, IPoolEvent
         _source = gameObject.AddComponent<AudioSource>();
 
         _volume = 0;
-        _isSet = false;
     }
 
     public void OnEnableEvent()
@@ -30,6 +28,8 @@ public class Sounder : MonoBehaviour, IPool, IPoolEvent
 
     public void SetData(SoundData data, Transform user, SoundType type)
     {
+        _source.clip = data.AudioClip;
+
         _volume = data.Volume;
         SetVolume(data.Volume, type);
 
@@ -42,7 +42,6 @@ public class Sounder : MonoBehaviour, IPool, IPoolEvent
         else transform.position = Vector3.zero;
 
         _soundType = type;
-        _isSet = true;
     }
 
     void SetVolume(float volume, SoundType type)
@@ -67,13 +66,8 @@ public class Sounder : MonoBehaviour, IPool, IPoolEvent
 
     public bool Execute()
     {
-        if (!_isSet)
-        {
-            return false;
-        }
-
         SetVolume(_volume, _soundType);
-
+        Debug.Log(_source.volume);
         return !_source.isPlaying;
     }
 
@@ -86,6 +80,5 @@ public class Sounder : MonoBehaviour, IPool, IPoolEvent
     {
         _source.Stop();
         _volume = 0;
-        _isSet = false;
     }
 }
