@@ -35,9 +35,12 @@ public class BulletOperator : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.FieldStateObservable
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.FieldStateObservable
             .Subscribe(s => _currentFieldState = s)
             .AddTo(this);
+        }
     }
 
     void Update()
@@ -66,20 +69,13 @@ public class BulletOperator : MonoBehaviour
             System.Action action;
             Bullet bullet = _bulletPool.UseRequest(out action);
 
-            Set(data, bullet);
+            Vector3 dir = SetDir(data.IBulletData);
+            SetBlur(param.Blur, ref dir);
+
+            bullet.SetData(data.Speed * dir, data.CurveVal, data.CurveSpeed);
 
             action.Invoke();
         }
-    }
-
-    void Set(BulletData data, Bullet bullet)
-    {
-        BulletParam param = data.IBulletData.SendData();
-        
-        Vector3 dir = SetDir(data.IBulletData);
-        CollectDir(param.Blur, ref dir);
-
-        bullet.SetData(data.Speed * dir, data.CurveVal, data.CurveSpeed);
     }
 
     // tbd
@@ -107,10 +103,25 @@ public class BulletOperator : MonoBehaviour
     }
 
     // Note. ÉJÉÅÉâÇ…ëŒÇ∑ÇÈÉuÉåÇëzíË
-    void CollectDir(float blur, ref Vector3 dir)
+    void SetBlur(float blur, ref Vector3 dir)
     {
         // tbd.
-        
+
+        switch (_currentFieldState)
+        {
+            case FieldState.Up:
+                break;
+            case FieldState.Down:
+                break;
+            case FieldState.Right:
+                break;
+            case FieldState.Left:
+                break;
+            case FieldState.Forward:
+                break;
+            case FieldState.Behind:
+                break;
+        }
     }
 
     public void IsAuto(bool isAuto)
