@@ -77,25 +77,16 @@ public class BulletOperator : MonoBehaviour
                 System.Action action;
                 Bullet bullet = _bulletPool.UseRequest(out action);
 
-                FieldStateHelper.ViewState view = FieldStateHelper.CollectState(_currentFieldState);
-                Vector3 dir = data.IBulletData.SetDir(view, transform);
-
-                //SetBlur(param.Blur, ref dir);
+                FieldStateHelper.State state = FieldStateHelper.CollectState(_currentFieldState);
+                Vector3 dir = data.IBulletData.SetNormalizeDir(state, transform).normalized;
 
                 bullet.SetData(data.Speed * dir, data.CurveVal, data.CurveSpeed);
 
                 action.Invoke();
             }
 
-
+            data.IBulletData.Initalize();
         }
-    }
-
-    // Note. ƒJƒƒ‰‚É‘Î‚·‚éƒuƒŒ‚ğ‘z’è
-    void SetBlur(float blur, ref Vector3 dir)
-    {
-        // tbd.
-
     }
 
     /// <summary>

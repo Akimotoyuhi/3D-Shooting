@@ -2,9 +2,28 @@ using UnityEngine;
 
 public interface IBulletData
 {
+    /// <summary>
+    /// 弾のタイプ
+    /// </summary>
     BulletType Type { get; }
+
+    /// <summary>
+    /// 設定されたBulletParamのデータを伝える。
+    /// </summary>
+    /// <returns></returns>
     BulletParam SendData();
-    Vector3 SetDir(FieldStateHelper.ViewState state, Transform user);
+
+    /// <summary>
+    /// WayCount分呼び出される
+    /// </summary>
+    /// <param name="state"></param>
+    /// <param name="user"></param>
+    /// <returns></returns>
+    Vector3 SetNormalizeDir(FieldStateHelper.State state, Transform user);
+
+    /// <summary>
+    /// 初期化
+    /// </summary>
     void Initalize();
 }
 

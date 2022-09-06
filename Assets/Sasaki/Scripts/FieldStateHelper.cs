@@ -1,7 +1,7 @@
 
 public static class FieldStateHelper
 {
-    public enum ViewState
+    public enum State
     { 
         TopView,
         SideView,
@@ -10,23 +10,23 @@ public static class FieldStateHelper
         None
     }
 
-    public static ViewState CollectState(FieldState state)
+    public static State CollectState(FieldState state)
     {
-        ViewState view = ViewState.None;
+        State view = State.None;
 
         switch (state)
         {
-            case FieldState.Up: view = ViewState.TopView;
+            case FieldState.Up: view = State.TopView;
                 break;
-            case FieldState.Down: view = ViewState.TopView;
+            case FieldState.Down: view = State.TopView;
                 break;
-            case FieldState.Right: view = ViewState.SideView;
+            case FieldState.Right: view = State.SideView;
                 break;
-            case FieldState.Left: view = ViewState.SideView;
+            case FieldState.Left: view = State.SideView;
                 break;
-            case FieldState.Forward: view = ViewState.BackView;
+            case FieldState.Forward: view = State.BackView;
                 break;
-            case FieldState.Behind: view = ViewState.BackView;
+            case FieldState.Behind: view = State.BackView;
                 break;
         }
 

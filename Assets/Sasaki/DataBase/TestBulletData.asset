@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: TestBulletData
   m_EditorClassIdentifier: 
   _bulletData:
-    _moveType: 0
     _speed: 5
     _curveVal: 0
     _curveSpeed: 0
     _bulletData:
-      rid: 3019562535339163648
+      rid: 3019562543105703936
   references:
     version: 2
     RefIds:
-    - rid: 3019562535339163648
+    - rid: 3019562543105703936
       type: {class: ForwardBullet, ns: , asm: Assembly-CSharp}
       data:
-        _blur: 1
+        _towardType: 0
+        _horizontalBlur: 0.039
+        _virticleBlur: 0.117
