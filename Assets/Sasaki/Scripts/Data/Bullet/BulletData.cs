@@ -13,15 +13,14 @@ public class BulletData
     [System.Serializable]
     public class CurveData
     {
-        [SerializeField, Range(-1, 1)] float _curveVal = 0;
+        [SerializeField, Range(-1, 1)] int _curveVal = 0;
         [SerializeField] float _curveSpeed;
 
-        public float Valume => _curveVal;
+        public int Valume => _curveVal;
         public float Speed => _curveSpeed;
     }
 
     public float Speed => _speed;
-    public float CurveVal => _curveData.Valume;
-    public float CurveSpeed => _curveData.Speed;
+    public float CurveVal => _curveData.Valume * _curveData.Speed;
     public IBulletData IBulletData => _bulletData; 
 }

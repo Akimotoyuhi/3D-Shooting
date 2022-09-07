@@ -79,8 +79,8 @@ public class BulletOperator : MonoBehaviour
 
                 FieldStateHelper.State state = FieldStateHelper.CollectState(_currentFieldState);
                 Vector3 dir = data.IBulletData.SetNormalizeDir(state, transform).normalized;
-
-                bullet.SetData(data.Speed * dir, data.CurveVal, data.CurveSpeed);
+                
+                bullet.SetData(data.Speed * dir, data.CurveVal, state);
 
                 action.Invoke();
             }

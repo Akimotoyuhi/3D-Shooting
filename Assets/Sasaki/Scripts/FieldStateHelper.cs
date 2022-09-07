@@ -6,13 +6,11 @@ public static class FieldStateHelper
         TopView,
         SideView,
         BackView,
-
-        None
     }
 
     public static State CollectState(FieldState state)
     {
-        State view = State.None;
+        State view = State.TopView;
 
         switch (state)
         {
