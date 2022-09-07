@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45333896d878ad54d983f2bd20e37468, type: 3}
-  m_Name: TestBulletDataForward
+  m_Name: SampleDataCircle
   m_EditorClassIdentifier: 
   _bulletData:
     _speed: 5
-    _curveVal: 0
-    _curveSpeed: 0
+    _curveData:
+      _curveVal: 0
+      _curveSpeed: 0
     _bulletData:
-      rid: 3019562543105703936
+      rid: 3019562556275556354
   references:
     version: 2
     RefIds:
-    - rid: 3019562543105703936
-      type: {class: ForwardBullet, ns: , asm: Assembly-CSharp}
+    - rid: 3019562556275556354
+      type: {class: CircleBullet, ns: , asm: Assembly-CSharp}
       data:
-        _towardType: 0
-        _horizontalBlur: 0.039
-        _virticleBlur: 0.117
+        _wayCount: 4
+        _defaultAngle: 45

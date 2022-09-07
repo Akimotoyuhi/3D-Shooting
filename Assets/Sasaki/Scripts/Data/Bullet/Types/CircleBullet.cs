@@ -6,10 +6,12 @@ using UnityEngine;
 public class CircleBullet : IBulletData
 {
     [SerializeField] int _wayCount;
+    [SerializeField, Range(0, 360)] float _defaultAngle;
+
+    float _angle;
 
     const int DefaultWayCount = 2;
-
-    public BulletType Type => BulletType.Circle;
+    const float CircleAngle = 360;
 
     public BulletParam SendData()
     {
@@ -30,11 +32,28 @@ public class CircleBullet : IBulletData
 
     public Vector3 SetNormalizeDir(FieldStateHelper.State state, Transform user)
     {
-        return Vector3.zero;
+        float angle = CircleAngle / _wayCount;
+        _angle += angle;
+
+        float rad = (_angle + _defaultAngle) * Mathf.Deg2Rad;
+
+        Vector3 dir = Vector3.zero;
+
+        switch (state)
+        {
+            case FieldStateHelper.State.TopView: dir = new Vector3(Mathf.Sin(rad), 0, Mathf.Cos(rad));
+                break;
+            case FieldStateHelper.State.SideView: dir = new Vector3(0, Mathf.Sin(rad), Mathf.Cos(rad));
+                break;
+            case FieldStateHelper.State.BackView: dir = new Vector3(Mathf.Sin(rad), Mathf.Cos(rad), 0);
+                break;
+        }
+
+        return dir;
     }
 
     public void Initalize()
     {
-        
+        _angle = 0;
     }
 }
