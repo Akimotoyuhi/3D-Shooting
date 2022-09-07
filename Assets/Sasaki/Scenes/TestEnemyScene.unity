@@ -470,6 +470,8 @@ MonoBehaviour:
   _isHideFlag: 0
   _createCount: 10
   _intervalTime: 0.5
-  _bulletDataList:
-  - {fileID: 11400000, guid: 5925e01f3b859794e9030d6f8540a0ec, type: 2}
-  - {fileID: 11400000, guid: cb632dbb28ad3134382ad4300b3707a2, type: 2}
+  _bulletTaskList:
+  - _dataBase: {fileID: 11400000, guid: 5925e01f3b859794e9030d6f8540a0ec, type: 2}
+    _taskTime: 2
+  - _dataBase: {fileID: 11400000, guid: cb632dbb28ad3134382ad4300b3707a2, type: 2}
+    _taskTime: 0

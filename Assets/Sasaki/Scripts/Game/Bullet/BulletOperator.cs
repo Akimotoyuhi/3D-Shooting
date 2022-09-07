@@ -12,10 +12,12 @@ public class BulletOperator : MonoBehaviour
     [SerializeField] bool _isHideFlag;
     [SerializeField] int _createCount = 5;
     [SerializeField] float _intervalTime;
-    [SerializeField] List<BulletDataBase> _bulletDataList;
+    [SerializeField] List<BulletTask> _bulletTaskList;
 
     float _timer;
     bool _isAuto;
+
+    int _taskID = 0;
 
     FieldState _currentFieldState;
 
@@ -58,7 +60,20 @@ public class BulletOperator : MonoBehaviour
         if (_timer > _intervalTime)
         {
             _timer = 0;
-            ShotRequest();
+
+            try
+            {
+                if (_bulletTaskList[_taskID].IsProcess())
+                {
+                    ShotRequest();
+                    _bulletTaskList[_taskID].Initalize();
+                    _taskID++;
+                }
+            }
+            catch
+            {
+                _taskID = 0;
+            }
         }
     }
 
@@ -67,25 +82,22 @@ public class BulletOperator : MonoBehaviour
     /// </summary>
     public void ShotRequest()
     {
-        foreach (BulletDataBase dataBase in _bulletDataList)
+        BulletDataBase dataBase = _bulletTaskList[_taskID].BulletData;
+
+        BulletData data = dataBase.BulletData;
+        BulletParam param = data.IBulletData.SendData();
+
+        for (int index = 0; index < param.WayCount; index++)
         {
-            BulletData data = dataBase.BulletData;
-            BulletParam param = data.IBulletData.SendData();
+            System.Action action;
+            Bullet bullet = _bulletPool.UseRequest(out action);
 
-            for (int index = 0; index < param.WayCount; index++)
-            {
-                System.Action action;
-                Bullet bullet = _bulletPool.UseRequest(out action);
+            FieldStateHelper.State state = FieldStateHelper.CollectState(_currentFieldState);
+            Vector3 dir = data.IBulletData.SetNormalizeDir(state, transform).normalized;
 
-                FieldStateHelper.State state = FieldStateHelper.CollectState(_currentFieldState);
-                Vector3 dir = data.IBulletData.SetNormalizeDir(state, transform).normalized;
-                
-                bullet.SetData(data.Speed * dir, data.CurveVal, state);
+            bullet.SetData(data.Speed * dir, data.CurveVal, state);
 
-                action.Invoke();
-            }
-
-            data.IBulletData.Initalize();
+            action.Invoke();
         }
     }
 
