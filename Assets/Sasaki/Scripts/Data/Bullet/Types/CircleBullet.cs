@@ -11,7 +11,7 @@ public class CircleBullet : IBulletData
 
     public BulletType Type => BulletType.Circle;
 
-    public BulletParam SetupData()
+    public BulletParam SendData()
     {
         BulletParam param = new BulletParam();
 
@@ -28,18 +28,13 @@ public class CircleBullet : IBulletData
         return param;
     }
 
-    public BulletParam SendData()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public Vector3 SetNormalizeDir(FieldStateHelper.State state, Transform user)
     {
-        throw new System.NotImplementedException();
+        return Vector3.zero;
     }
 
     public void Initalize()
     {
-        throw new System.NotImplementedException();
+        
     }
 }
