@@ -144,15 +144,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveData:
-    _moveType: 1
+    _moveType: 0
     _speed: 2
     _shakeCondition:
       _horizontal: 0
-      _verticle: 0
+      _verticle: 1
       _horizontalSpeed: 0
-      _verticleSpeed: 0
-      _size: 0
-      _loopSpeed: 0
+      _verticleSpeed: 1
+      _size: 5
+      _loopSpeed: 1
 --- !u!114 &846321268065951503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,5 +169,4 @@ MonoBehaviour:
   _isHideFlag: 1
   _createCount: 10
   _intervalTime: 0.5
-  _bulletDataList:
-  - {fileID: 11400000, guid: 243a6471b52c85e4790d6bf6c4ac50b4, type: 2}
+  _bulletTaskList: []
