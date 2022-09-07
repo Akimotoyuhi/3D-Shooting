@@ -467,8 +467,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: -7384512543833231640, guid: 3bf52b435d865c04cb84c46ae69ce94e, type: 3}
-  _isHideFlag: 1
+  _isHideFlag: 0
   _createCount: 10
   _intervalTime: 0.5
   _bulletDataList:
-  - {fileID: 11400000, guid: 243a6471b52c85e4790d6bf6c4ac50b4, type: 2}
+  - {fileID: 11400000, guid: 5925e01f3b859794e9030d6f8540a0ec, type: 2}
+  - {fileID: 11400000, guid: cb632dbb28ad3134382ad4300b3707a2, type: 2}

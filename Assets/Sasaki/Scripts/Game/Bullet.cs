@@ -38,30 +38,32 @@ public class Bullet : MonoBehaviour, IPool, IPoolEvent
     public void OnEnableEvent()
     {
         transform.position = _parent.position;
+        transform.rotation = Quaternion.LookRotation(_velocity);
     }
 
     public bool Execute()
     {
         _timer += Time.deltaTime;
 
-        _rb.velocity = SetVeleocity();
+        float curve = _timer * _curve;
+        _rb.velocity = _velocity + SetCurve();
 
         return _timer > _activeTime;
     }
 
-    Vector3 SetVeleocity()
+    Vector3 SetCurve()
     {
         float curve = _timer * _curve;
 
-        Vector3 velcity = _velocity;
+        Vector3 velcity = Vector3.zero;
 
         switch (_state)
         {
-            case FieldStateHelper.State.TopView: velcity.x += curve;
+            case FieldStateHelper.State.TopView: velcity = transform.right * curve;
                 break;
-            case FieldStateHelper.State.SideView: velcity.y += curve;
+            case FieldStateHelper.State.SideView: velcity = transform.up * curve;
                 break;
-            case FieldStateHelper.State.BackView: velcity.z += curve;
+            case FieldStateHelper.State.BackView: velcity= transform.right * curve;
                 break;
         }
 
