@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e9c052d0a3b03a42842e964bffc0863, type: 3}
+  m_Name: Test Enemy Data
+  m_EditorClassIdentifier: 
+  _datas:
+  - _fieldState: 0
+    _waveEnemiesDatas:
+    - _spawnTime: 3
+      _spawnPosition: {x: 0, y: 0, z: 20}
+      _enemyPrefabs:
+      - {fileID: 846321268065951498, guid: bce5fc083cee8b749ba5cc30ad1fd050, type: 3}
