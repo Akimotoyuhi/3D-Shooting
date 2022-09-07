@@ -35,8 +35,8 @@ public class GameManager : MonoBehaviour
     {
         CurrentPlayer = Instantiate(_playerPrefab);
         CurrentPlayer.Setup();
-
-        _fieldManager.StartWave(_stageData.Datas[0].WaveEnemiesDatas); //テスト用にとりあえず
+        if (_stageData != null)
+            _fieldManager.StartWave(_stageData.Datas[0].WaveEnemiesDatas); //テスト用にとりあえず
     }
 
     /// <summary>
