@@ -27,4 +27,14 @@ public class CircleBullet : IBulletData
 
         return param;
     }
+
+    public Vector3 SetNormalizeDir(FieldStateHelper.State state, Transform user)
+    {
+        return Vector3.zero;
+    }
+
+    public void Initalize()
+    {
+        
+    }
 }

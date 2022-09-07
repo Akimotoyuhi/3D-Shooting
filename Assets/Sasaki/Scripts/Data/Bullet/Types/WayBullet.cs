@@ -8,6 +8,8 @@ public class WayBullet : IBulletData
     [SerializeField] int _wayCount = 2;
     [SerializeField] float _angle = 0;
 
+    int _counter = 0;
+
     const int DefaultWayCount = 2;
 
     public BulletType Type => BulletType.Way;
@@ -25,9 +27,21 @@ public class WayBullet : IBulletData
         {
             param.WayCount = _wayCount;
         }
-        
-        param.Angle = _angle;
 
         return param;
+    }
+
+    public Vector3 SetNormalizeDir(FieldStateHelper.State state, Transform user)
+    {
+        Vector3 dir = Vector3.zero;
+
+
+
+        return dir;
+    }
+
+    public void Initalize()
+    {
+        _counter = 0;
     }
 }
