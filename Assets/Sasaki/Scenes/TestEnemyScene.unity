@@ -692,6 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525a0dbc27c5c6343a337c992ba7ea60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _muzzle: {fileID: 0}
   _bulletPrefab: {fileID: -7384512543833231640, guid: 3bf52b435d865c04cb84c46ae69ce94e, type: 3}
   _isHideFlag: 0
   _createCount: 10
@@ -866,6 +867,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!4 &2111163848 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7486914164888461950, guid: 446d11ffdc6e8254092a90c5923e80cb, type: 3}
+  m_PrefabInstance: {fileID: 4337458844476764443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4337458844476764443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -873,6 +879,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4337458844944424476, guid: 446d11ffdc6e8254092a90c5923e80cb, type: 3}
+      propertyPath: _moveData._speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337458844944424477, guid: 446d11ffdc6e8254092a90c5923e80cb, type: 3}
+      propertyPath: _muzzle
+      value: 
+      objectReference: {fileID: 2111163848}
+    - target: {fileID: 4337458844944424477, guid: 446d11ffdc6e8254092a90c5923e80cb, type: 3}
+      propertyPath: _isHideFlag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337458844944424477, guid: 446d11ffdc6e8254092a90c5923e80cb, type: 3}
+      propertyPath: _intervalTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337458844944424477, guid: 446d11ffdc6e8254092a90c5923e80cb, type: 3}
+      propertyPath: _bulletDataList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337458844944424477, guid: 446d11ffdc6e8254092a90c5923e80cb, type: 3}
+      propertyPath: _bulletDataList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 243a6471b52c85e4790d6bf6c4ac50b4, type: 2}
+    - target: {fileID: 4337458844944424477, guid: 446d11ffdc6e8254092a90c5923e80cb, type: 3}
+      propertyPath: _bulletDataList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5925e01f3b859794e9030d6f8540a0ec, type: 2}
     - target: {fileID: 4337458844944424479, guid: 446d11ffdc6e8254092a90c5923e80cb, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -6,8 +6,8 @@ using UniRx;
 /// Charactorのステータスデータ
 /// </summary>
 
-[System.Serializable]
-public class UserStatusData
+[Serializable]
+public class UserData
 {
     [SerializeField] int _hp;
     [SerializeField] int _power;
