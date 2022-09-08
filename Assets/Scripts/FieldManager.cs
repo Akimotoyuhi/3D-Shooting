@@ -5,8 +5,12 @@ using UniRx;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 
+/// <summary>
+/// 敵の生成等を行うFieldの管理クラス
+/// </summary>
 public class FieldManager : MonoBehaviour
 {
+    /// <summary>現在のFieldState保存用</summary>
     private FieldState _fieldState;
 
     public void Setup()
@@ -16,6 +20,10 @@ public class FieldManager : MonoBehaviour
             .AddTo(this);
     }
 
+    /// <summary>
+    /// Waveの開始
+    /// </summary>
+    /// <param name="waveEnemiesDatas">開始するWaveのデータ</param>
     public void StartWave(List<WaveEnemiesData> waveEnemiesDatas)
     {
         waveEnemiesDatas.ForEach(data =>
@@ -24,6 +32,9 @@ public class FieldManager : MonoBehaviour
         });
     }
 
+    /// <summary>
+    /// 敵の生成
+    /// </summary>
     private async UniTask CreateEnemies(float duration, Vector3 spawnPosition, List<Enemy> enemies)
     {
         //ミリ秒に変換

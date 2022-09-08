@@ -20,6 +20,11 @@ public class CameraManager : MonoBehaviour
 
     private void Start()
     {
+        if (_camera == null)
+        {
+            Debug.LogError("カメラがアサインされてません");
+        }
+
         //FieldStateの変化を監視
         GameManager.Instance.FieldStateObservable
             .Subscribe(x => CameraMove(x))
