@@ -11,8 +11,8 @@ public class Bullet : MonoBehaviour, IPool, IPoolEvent
 
     float _timer;
 
-    float _curveVal;
-    float _curveSpeed;
+    float _curve;
+    FieldStateHelper.State _state;
     Vector3 _velocity;
     
     Rigidbody _rb;
@@ -28,30 +28,46 @@ public class Bullet : MonoBehaviour, IPool, IPoolEvent
         _parent = parent;
     }
 
-    public void SetData(Vector3 velocity, float curveVal, float curveSpeed)
+    public void SetData(Vector3 velocity, float curve, FieldStateHelper.State state)
     {
         _velocity = velocity;
-        _curveVal = curveVal;
-        _curveSpeed = curveSpeed;
+        _curve = curve;
+        _state = state;
     }
 
     public void OnEnableEvent()
     {
         transform.position = _parent.position;
+        transform.rotation = Quaternion.LookRotation(_velocity);
     }
 
     public bool Execute()
     {
         _timer += Time.deltaTime;
 
-        Vector3 velocity = _velocity;
-        float curve = _timer * _curveSpeed;
-
-
-
-        _rb.velocity = velocity;
+        float curve = _timer * _curve;
+        _rb.velocity = _velocity + SetCurve();
 
         return _timer > _activeTime;
+    }
+
+    Vector3 SetCurve()
+    {
+        float curve = _timer * _curve;
+
+        Vector3 velcity = Vector3.zero;
+
+        switch (_state)
+        {
+            case FieldStateHelper.State.TopView: velcity = transform.right * curve;
+                break;
+            case FieldStateHelper.State.SideView: velcity = transform.up * curve;
+                break;
+            case FieldStateHelper.State.BackView: velcity= transform.right * curve;
+                break;
+        }
+
+        return velcity;
     }
 
     public void Delete()

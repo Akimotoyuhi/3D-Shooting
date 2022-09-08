@@ -3,11 +3,6 @@ using UnityEngine;
 public interface IBulletData
 {
     /// <summary>
-    /// 弾のタイプ
-    /// </summary>
-    BulletType Type { get; }
-
-    /// <summary>
     /// 設定されたBulletParamのデータを伝える。
     /// </summary>
     /// <returns></returns>
@@ -25,13 +20,6 @@ public interface IBulletData
     /// 初期化
     /// </summary>
     void Initalize();
-}
-
-public enum BulletType
-{
-    Forward,
-    Way,
-    Circle,
 }
 
 /// <summary>

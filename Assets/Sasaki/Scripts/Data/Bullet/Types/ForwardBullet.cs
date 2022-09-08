@@ -9,8 +9,6 @@ public class ForwardBullet : IBulletData
     [SerializeField, Range(0, 1)] float _horizontalBlur;
     [SerializeField, Range(0, 1)] float _virticleBlur;
 
-    public BulletType Type => BulletType.Forward;
-
     public BulletParam SendData()
     {
         BulletParam param = new BulletParam();

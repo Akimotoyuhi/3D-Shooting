@@ -12,8 +12,6 @@ public class WayBullet : IBulletData
 
     const int DefaultWayCount = 2;
 
-    public BulletType Type => BulletType.Way;
-
     public BulletParam SendData()
     {
         BulletParam param = new BulletParam();
