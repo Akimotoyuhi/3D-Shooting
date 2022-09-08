@@ -23,6 +23,13 @@ public abstract class EnemyBase : CharaBase
         _moveOperator.OprationRequest(true);
 
         _bulletOperator.IsAuto(true);
+
+        SetRotate();
+    }
+
+    void SetRotate()
+    {
+        
     }
 
     protected override void DeadEvent()
