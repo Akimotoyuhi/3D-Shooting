@@ -10,6 +10,8 @@ public class MoveOperator : MonoBehaviour
     float _shakeTimer;
     bool _isRequest;
 
+    float _speed;
+
     void Update()
     {
         if (!_isRequest)
@@ -18,6 +20,11 @@ public class MoveOperator : MonoBehaviour
         }
 
         _shakeTimer += Time.deltaTime * _moveData.LoopSpeed;
+    }
+
+    public void SetSpeed(float speed)
+    {
+        _speed = speed;
     }
 
     /// <summary>
@@ -29,7 +36,7 @@ public class MoveOperator : MonoBehaviour
     {
         Vector2 dir = SetDir() * _moveData.ShakeSize;
 
-        Vector3 forward = SetToward(t) * _moveData.Speed;
+        Vector3 forward = SetToward(t) * _speed;
         Vector3 right = t.right * dir.x;
         
         return new Vector3(forward.x + right.x, forward.y + dir.y, forward.z + right.z);

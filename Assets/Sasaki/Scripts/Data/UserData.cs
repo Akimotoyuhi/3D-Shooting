@@ -11,6 +11,7 @@ public class UserData
 {
     [SerializeField] int _hp;
     [SerializeField] int _power;
+    [SerializeField] float _speed;
 
     ReactiveProperty<int> _reactiveHP = new ReactiveProperty<int>();
 
@@ -19,6 +20,7 @@ public class UserData
     public int CurrentHP => _reactiveHP.Value;
     public int MaxHP { get; private set; }
     public int Power => _power;
+    public float Speed => _speed;
 
     public void Setup()
     {
@@ -33,5 +35,14 @@ public class UserData
     public void UpdateHP(int hp)
     {
         _reactiveHP.Value = hp;
+    }
+
+    /// <summary>
+    /// XV‚³‚ê‚½Speedî•ñ‚ÌSpeed
+    /// </summary>
+    /// <param name="speed"></param>
+    public void UpdateSpeed(float speed)
+    {
+        _speed = speed;
     }
 }
