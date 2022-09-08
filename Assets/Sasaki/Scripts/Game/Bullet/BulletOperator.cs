@@ -93,6 +93,8 @@ public class BulletOperator : MonoBehaviour
 
                 action.Invoke();
             }
+
+            data.IBulletData.Initalize();
         }
     }
 

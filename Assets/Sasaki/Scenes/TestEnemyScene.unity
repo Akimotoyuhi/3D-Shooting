@@ -642,6 +642,7 @@ MonoBehaviour:
   _statusData:
     _hp: 0
     _power: 0
+    _speed: 0
 --- !u!114 &1656443204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -656,7 +657,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveData:
     _moveType: 0
-    _speed: 3
     _shakeCondition:
       _horizontal: 0
       _verticle: 0
@@ -897,12 +897,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4337458844944424477, guid: 446d11ffdc6e8254092a90c5923e80cb, type: 3}
       propertyPath: _bulletDataList.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4337458844944424477, guid: 446d11ffdc6e8254092a90c5923e80cb, type: 3}
       propertyPath: _bulletDataList.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 243a6471b52c85e4790d6bf6c4ac50b4, type: 2}
+      objectReference: {fileID: 11400000, guid: a64babf1e1fd90149b0b9cfc9821f8b4, type: 2}
     - target: {fileID: 4337458844944424477, guid: 446d11ffdc6e8254092a90c5923e80cb, type: 3}
       propertyPath: _bulletDataList.Array.data[1]
       value: 
@@ -957,7 +957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4337458844944424933, guid: 446d11ffdc6e8254092a90c5923e80cb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 446d11ffdc6e8254092a90c5923e80cb, type: 3}
