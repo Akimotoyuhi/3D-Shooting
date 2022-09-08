@@ -1,32 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : EnemyBase, IDamageble
 {
-    [SerializeField] MoveOperator _moveOperator;
-    [SerializeField] BulletOperator _bulletOperator;
-
-    Rigidbody _rb;
-
-    void Start()
+    private void Update()
     {
-        _rb = GetComponent<Rigidbody>();
-
-        _moveOperator.Initalize();
-        _moveOperator.OprationRequest(true);
-
-        _bulletOperator.IsAuto(true);
+        Vector3 move = MoveOperator.Move(transform);
+        Rigidbody.velocity = move;
     }
 
-    void Update()
+    public void GetDamage(int damage)
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            _bulletOperator.ShotRequest();
-        }
+        int hp = UserData.CurrentHP - damage;
 
-        Vector3 move = _moveOperator.Move(transform);
-        _rb.velocity = move;
+        UserData.UpdateHP(hp);
     }
 }
