@@ -26,4 +26,4 @@ MonoBehaviour:
       type: {class: WayBullet, ns: , asm: Assembly-CSharp}
       data:
         _wayCount: 2
-        _angle: 0
+        _angle: 30
