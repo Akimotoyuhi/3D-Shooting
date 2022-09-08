@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2857471961432648361}
   - component: {fileID: 2857471961432648366}
   - component: {fileID: 2857471961432648367}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BottomMoveLimit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 2857471961729770926}
   - component: {fileID: 2857471961729770927}
   - component: {fileID: 2857471961729770924}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TopMoveLimit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 2857471962364211649}
   - component: {fileID: 2857471962364211654}
   - component: {fileID: 2857471962364211655}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ForwardMoveLimit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 2857471962412592677}
   - component: {fileID: 2857471962412592858}
   - component: {fileID: 2857471962412592859}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftMoveLimit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 2857471962771338750}
   - component: {fileID: 2857471962771338751}
   - component: {fileID: 2857471962771338748}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightMoveLimit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 2857471963083317933}
   - component: {fileID: 2857471963083317922}
   - component: {fileID: 2857471963083317923}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BehindMoveLimit
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -429,6 +429,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2857471961432648364, guid: 40ce0e5790210fb4bb53d742a7f89892, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2857471961706338256, guid: 40ce0e5790210fb4bb53d742a7f89892, type: 3}
       propertyPath: m_Name
       value: FieldBorderLines
@@ -476,6 +480,26 @@ PrefabInstance:
     - target: {fileID: 2857471961706338259, guid: 40ce0e5790210fb4bb53d742a7f89892, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2857471961729770925, guid: 40ce0e5790210fb4bb53d742a7f89892, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2857471962364211653, guid: 40ce0e5790210fb4bb53d742a7f89892, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2857471962412592857, guid: 40ce0e5790210fb4bb53d742a7f89892, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2857471962771338749, guid: 40ce0e5790210fb4bb53d742a7f89892, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2857471963083317921, guid: 40ce0e5790210fb4bb53d742a7f89892, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40ce0e5790210fb4bb53d742a7f89892, type: 3}
