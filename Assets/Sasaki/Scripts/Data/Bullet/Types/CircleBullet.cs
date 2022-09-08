@@ -55,5 +55,5 @@ public class CircleBullet : IBulletData
     public void Initalize()
     {
         _angle = 0;
-    }
+    }   
 }

@@ -7,6 +7,7 @@ using ObjectPool;
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour, IPool, IPoolEvent
 {
+    [SerializeField] int _power;
     [SerializeField] float _activeTime;
 
     float _timer;
@@ -14,38 +15,37 @@ public class Bullet : MonoBehaviour, IPool, IPoolEvent
     float _curve;
     FieldStateHelper.State _state;
     Vector3 _velocity;
+    Vector3 _offset;
     
     Rigidbody _rb;
-    Transform _parent;
-
+   
     public bool IsDone { get; set; }
 
     public void Setup(Transform parent)
     {
         _rb = GetComponent<Rigidbody>();
         _rb.useGravity = false;
-
-        _parent = parent;
     }
 
-    public void SetData(Vector3 velocity, float curve, FieldStateHelper.State state)
+    public void SetData(Vector3 velocity, Vector3 offset, float curve, FieldStateHelper.State state)
     {
         _velocity = velocity;
+        _offset = offset;
         _curve = curve;
         _state = state;
     }
 
     public void OnEnableEvent()
     {
-        transform.position = _parent.position;
+        transform.position = _offset;
         transform.rotation = Quaternion.LookRotation(_velocity);
+
+        transform.SetParent(null);
     }
 
     public bool Execute()
     {
         _timer += Time.deltaTime;
-
-        float curve = _timer * _curve;
         _rb.velocity = _velocity + SetCurve();
 
         return _timer > _activeTime;
@@ -78,6 +78,12 @@ public class Bullet : MonoBehaviour, IPool, IPoolEvent
 
     private void OnCollisionEnter(Collision collision)
     {
-        //IsDone = true;
+        IDamageble damageble = collision.gameObject.GetComponent<IDamageble>();
+        
+        if (damageble != null)
+        {
+            damageble.GetDamage(_power);
+            IsDone = true;
+        }
     }
 }

@@ -13,11 +13,11 @@ public interface IDamageble
 [RequireComponent(typeof(Rigidbody))]
 public abstract class CharaBase : MonoBehaviour
 {
-    [SerializeField] UserStatusData _statusData;
+    [SerializeField] UserData _statusData;
 
     protected Rigidbody Rigidbody { get; private set; }
 
-    protected UserStatusData UserStatusData => _statusData;
+    protected UserData UserStatusData => _statusData;
 
     void Start()
     {

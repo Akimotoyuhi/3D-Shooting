@@ -8,6 +8,7 @@ using ObjectPool;
 /// </summary>
 public class BulletOperator : MonoBehaviour
 {
+    [SerializeField] Transform _muzzle;
     [SerializeField] Bullet _bulletPrefab;
     [SerializeField] bool _isHideFlag;
     [SerializeField] int _createCount = 5;
@@ -25,7 +26,7 @@ public class BulletOperator : MonoBehaviour
     {
         _bulletPool
             .SetMono(_bulletPrefab, _createCount)
-            .IsSetParent(transform)
+            .IsSetParent(_muzzle)
             .IsAutoActive();
 
         if (_isHideFlag)
@@ -43,6 +44,11 @@ public class BulletOperator : MonoBehaviour
             GameManager.Instance.FieldStateObservable
             .Subscribe(s => _currentFieldState = s)
             .AddTo(this);
+        }
+
+        if (_muzzle == null)
+        {
+            _muzzle = transform;
         }
     }
 
@@ -78,9 +84,12 @@ public class BulletOperator : MonoBehaviour
                 Bullet bullet = _bulletPool.UseRequest(out action);
 
                 FieldStateHelper.State state = FieldStateHelper.CollectState(_currentFieldState);
-                Vector3 dir = data.IBulletData.SetNormalizeDir(state, transform).normalized;
+                Vector3 dir = data.IBulletData.SetNormalizeDir(state, _muzzle).normalized;
 
-                bullet.SetData(data.Speed * dir, data.CurveVal, state);
+                float dist = Vector3.Distance(transform.position, _muzzle.position);
+                Vector3 offset = (dir * dist) + transform.position;
+
+                bullet.SetData(data.Speed * dir, offset, data.CurveVal, state);
 
                 action.Invoke();
             }

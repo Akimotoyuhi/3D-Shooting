@@ -15,8 +15,8 @@ MonoBehaviour:
   _bulletData:
     _speed: 5
     _curveData:
-      _curveVal: 1
-      _curveSpeed: 2.55
+      _curveVal: 0
+      _curveSpeed: 0
     _bulletData:
       rid: 3019562543105703936
   references:
