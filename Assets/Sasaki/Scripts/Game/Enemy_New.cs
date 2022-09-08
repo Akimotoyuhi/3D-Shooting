@@ -10,8 +10,8 @@ public class Enemy_New : EnemyBase, IDamageble
 
     public void GetDamage(int damage)
     {
-        int hp = UserStatusData.CurrentHP - damage;
+        int hp = UserData.CurrentHP - damage;
 
-        UserStatusData.UpdateHP(hp);
+        UserData.UpdateHP(hp);
     }
 }

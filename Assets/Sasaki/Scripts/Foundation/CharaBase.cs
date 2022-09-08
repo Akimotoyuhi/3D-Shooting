@@ -17,7 +17,7 @@ public abstract class CharaBase : MonoBehaviour
 
     protected Rigidbody Rigidbody { get; private set; }
 
-    protected UserData UserStatusData => _statusData;
+    protected UserData UserData => _statusData;
 
     void Start()
     {
@@ -42,7 +42,13 @@ public abstract class CharaBase : MonoBehaviour
             .AddTo(this);
     }
 
+    /// <summary>
+    /// ‰Šú‰»
+    /// </summary>
     protected abstract void Setup();
 
+    /// <summary>
+    /// €‚ñ‚¾Û‚Ìˆ—
+    /// </summary>
     protected abstract void DeadEvent();
 }

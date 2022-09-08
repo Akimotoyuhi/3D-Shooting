@@ -20,6 +20,7 @@ public abstract class EnemyBase : CharaBase
         _bulletOperator = GetComponent<BulletOperator>();
 
         _moveOperator.Initalize();
+        _moveOperator.SetSpeed(UserData.Speed);
         _moveOperator.OprationRequest(true);
 
         _bulletOperator.IsAuto(true);

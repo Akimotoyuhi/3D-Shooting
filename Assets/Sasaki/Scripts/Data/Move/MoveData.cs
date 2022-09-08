@@ -14,7 +14,6 @@ public enum MoveType
 public class MoveData
 {
     [SerializeField] MoveType _moveType;
-    [SerializeField] float _speed;
     [SerializeField] ShakeCondition _shakeCondition;
 
     /// <summary>
@@ -44,11 +43,6 @@ public class MoveData
     /// 行動タイプ
     /// </summary>
     public MoveType MoveType => _moveType;
-
-    /// <summary>
-    /// Enemyのスピード
-    /// </summary>
-    public float Speed => _speed;
 
     /// <summary>
     /// 振れ具合
