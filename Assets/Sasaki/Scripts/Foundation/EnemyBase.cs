@@ -11,6 +11,8 @@ public abstract class EnemyBase : CharaBase
     MoveOperator _moveOperator;
     BulletOperator _bulletOperator;
 
+    readonly string PlayerLayer = "Player"; 
+
     protected MoveOperator MoveOperator => _moveOperator;
     protected BulletOperator BulletOperator => _bulletOperator;
 
@@ -36,5 +38,20 @@ public abstract class EnemyBase : CharaBase
     protected override void DeadEvent()
     {
         _moveOperator.OprationRequest(false);
+    }
+
+    protected virtual void OnCollisionEvent(Collision collision)
+    {
+        string layer = LayerMask.LayerToName(collision.gameObject.layer);
+        if (layer == PlayerLayer)
+        {
+            IDamageble damageble = collision.gameObject.GetComponent<IDamageble>();
+            damageble.GetDamage(UserData.Power);
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        OnCollisionEvent(collision);
     }
 }
