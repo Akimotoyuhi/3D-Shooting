@@ -32,7 +32,11 @@ public abstract class EnemyBase : CharaBase
 
     void SetRotate()
     {
-        
+        if (GameManager.Instance != null)
+        {
+            Vector3 forward = GameManager.Instance.CurrentPlayer.transform.forward;
+            transform.rotation = Quaternion.LookRotation(forward * -1);
+        }
     }
 
     protected override void DeadEvent()
